@@ -12,14 +12,16 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
-            DateTime dataFimPagamento = new DateTime(2021, 8, 21);
-            DateTime dataCorrente = DateTime.Now;
+            string url = "endereco?moedaOrigem=REAL&moedaDestino=DOLAR";
+            ExtratorDeArgumentos extratorDeArgumentos = new ExtratorDeArgumentos(url);
 
-            TimeSpan diferenca = dataFimPagamento - dataCorrente;
+            string moedaOrigem = extratorDeArgumentos.GetValor(nameof(moedaOrigem));
+            string moedaDestino = extratorDeArgumentos.GetValor(nameof(moedaDestino));
 
-            string mensagem = "falta " + TimeSpanHumanizeExtensions.Humanize(diferenca) + " para o vencimento da fatura";
+            Console.WriteLine("A moeda de origem é " + moedaOrigem);
+            Console.WriteLine("A moeda de destino é " + moedaDestino);
 
-            Console.WriteLine(mensagem);
+            Console.WriteLine(url);
 
             Console.ReadLine();
         }
