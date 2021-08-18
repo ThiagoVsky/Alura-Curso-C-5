@@ -13,10 +13,8 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
-            string padrao = "[(]?[0-9]{2}[)]?[9][0-9]{4}-?[0-9]{4}";
-            string textoTeste = "(61)99604-7681";
-            Match teste = Regex.Match(textoTeste, padrao);
-            Console.WriteLine(teste);
+            ContaCorrente conta = new ContaCorrente(1230, 4108468);
+            Console.WriteLine(conta);
 
             Console.ReadLine();
         }
