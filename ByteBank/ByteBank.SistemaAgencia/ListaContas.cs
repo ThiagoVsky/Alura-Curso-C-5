@@ -9,9 +9,23 @@ namespace ByteBank.SistemaAgencia
 {
     class ListaContas
     {
-        public ListaContas(params ContaCorrente[] contaCorrentes)
+        ContaCorrente[] contas = null;
+
+        public ListaContas(params ContaCorrente[] contas)
         {
+            this.contas = contas;
+        }
+
+        public void adicionar(params ContaCorrente[] contas)
+        {
+            
+            Array.Resize(ref this.contas, this.contas.Length + contas.Length);
 
         }
+        public ContaCorrente[] GetContas()
+        {
+            return contas;
+        }
+
     }
 }
