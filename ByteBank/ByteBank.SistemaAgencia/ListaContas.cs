@@ -10,21 +10,45 @@ namespace ByteBank.SistemaAgencia
     class ListaContas
     {
         ContaCorrente[] contas = null;
-
-        public ListaContas(params ContaCorrente[] contas)
+        int i = 0;
+        public ListaContas(params ContaCorrente[] inContas)
         {
-            this.contas = contas;
+            contas = inContas;
         }
 
-        public void adicionar(params ContaCorrente[] contas)
+        public void adicionar(params ContaCorrente[] inContas)
         {
-            
-            Array.Resize(ref this.contas, this.contas.Length + contas.Length);
+            i = 0;
+
+            Array.Resize(ref contas, contas.Length + inContas.Length);
+
+            foreach(ContaCorrente conta in inContas)
+            {
+                contas[contas.Length - inContas.Length + i] = conta;
+                Console.WriteLine(".." + conta);
+                i++;
+            }
+            i = 0;
 
         }
         public ContaCorrente[] GetContas()
         {
             return contas;
+        }
+
+        public override string ToString()
+        {
+            string toString = "";
+            i = 0;
+            foreach (ContaCorrente conta in contas)
+            {
+                i++;
+                //toString += conta.Numero;
+                Console.WriteLine($"Iteração do FOREACH:\n{conta.Numero}");
+                Console.WriteLine(i);
+            }
+            i = 0;
+            return toString;
         }
 
     }
